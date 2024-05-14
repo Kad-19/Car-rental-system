@@ -1,4 +1,3 @@
-
 public class Adminstrator extends Person {
     private String adminId;
 

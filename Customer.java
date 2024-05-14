@@ -1,4 +1,3 @@
-
 public class Customer extends Person {
     public Customer(String name, String email, String address, String userName, String password){
         this.name = name;
@@ -7,6 +6,6 @@ public class Customer extends Person {
         this.setAccount(userName, password);
     }
     public Customer(){
-        this.getAccount().setUserName("None");
+        this.getAccount().setUserName("");
     }
 }    

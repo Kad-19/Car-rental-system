@@ -1,55 +1,91 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-// Abstract class for managing customers
 public abstract class ManageCustomers {
-    // Static list to hold customer objects
-    private static List<Customer> customerList = new ArrayList<>();
-
-    // Static method to create a new customer object
-    public static void createCustomer(String name, String email, String address, String userName, String password) {
-        Customer customer = new Customer(name, email, address, userName, password);
-        customerList.add(customer);
+    public static void insertCustomer(Customer customer){
+        try{
+            Connection conn = DatabaseManagement.createConnection();
+            Statement statement = conn.createStatement();
+            statement.executeUpdate("Insert into Customers values ('" + customer.getAccount().getUsername() + "', '" + customer.getAccount().getPassword() + "', '" + customer.getName() + "', '" + customer.getEmail() + "', '" + customer.getAddress() + "')");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
-    // Static method to update an existing customer by username
-    public static void updateCustomer(String userName, String name, String email, String address) {
-        for (Customer customer : customerList) {
-            if (customer.getAccount().getUsername().equals(userName)) {
-                customer.setName(name);
-                customer.setEmail(email);
-                customer.setAddress(address);
-                break; // Stop searching after updating the customer
+    public static void updateCustomer(String username, String name, String email, String address){
+        try{
+            Connection conn = DatabaseManagement.createConnection();
+            Statement statement = conn.createStatement();
+            statement.executeUpdate("Update Customers Set Name = '" + name + "', Email = '" + email + "', Address = '" + address + "' Where Username = '" + username + "'");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void updatePassword(String username, String password){
+        try{
+            Connection conn = DatabaseManagement.createConnection();
+            Statement statement = conn.createStatement();
+            statement.executeUpdate("Update Customers Set Password '" + password + "' Where Username = '" + username + "'");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteCustomer(String username){
+        try{
+            Connection conn = DatabaseManagement.createConnection();
+            Statement statement = conn.createStatement();
+            statement.executeUpdate("Delete from Customers Where Username = '" + username + "'");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static Customer getCustomer(String username){
+        Customer customer = new Customer();
+        try{
+            Connection conn = DatabaseManagement.createConnection();
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery("Select * from Customers Where Username = '" + username + "'");
+            if(result.next()){
+                customer.setAccount(result.getString("Username"), result.getString("Password"));
+                customer.setName(result.getString("Name"));
+                customer.setEmail(result.getString("Email"));
+                customer.setAddress(result.getString("Address"));
             }
         }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return customer;
     }
 
-    // Static method to delete a customer by username
-    public static void deleteCustomer(String userName) {
-        Customer customerToRemove = null;
-        for (Customer customer : customerList) {
-            if (customer.getAccount().getUsername().equals(userName)) {
-                customerToRemove = customer;
-                break; // Stop searching after finding the customer to remove
+    public static List<Customer> getAllCustomer(){
+        ArrayList<Customer> customers = new ArrayList<>();
+        try{
+            Connection conn = DatabaseManagement.createConnection();
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery("Select * from Customers");
+            while(result.next()){
+                Customer customer = new Customer();
+                customer.setAccount(result.getString("Username"), result.getString("Password"));
+                customer.setName(result.getString("Name"));
+                customer.setEmail(result.getString("Email"));
+                customer.setAddress(result.getString("Address"));
+                customers.add(customer);
             }
         }
-        if (customerToRemove != null) {
-            customerList.remove(customerToRemove);
+        catch(Exception e){
+            e.printStackTrace();
         }
-    }
-
-    // Static method to retrieve a customer object by username
-    public static Customer getCustomer(String userName) {
-        for (Customer customer : customerList) {
-            if (customer.getAccount().getUsername().equals(userName)) {
-                return customer;
-            }
-        }
-        return null; // Customer not found
-    }
-
-    // Static method to retrieve all customers as a list
-    public static List<Customer> getAllCustomers() {
-        return new ArrayList<>(customerList); // Return a copy of the list to prevent direct modification
+        return customers;
     }
 }

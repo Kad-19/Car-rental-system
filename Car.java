@@ -1,5 +1,4 @@
 public class Car {
-
     private String regno;
     private String brand;
     private String model;
@@ -16,6 +15,7 @@ public class Car {
         this.status = status;
         this.price = price;
     }
+    
     public void setBrand(String brand) {
         this.brand = brand;
     }
@@ -31,6 +31,7 @@ public class Car {
     public void setStatus(String status) {
         this.status = status;
     }
+
     public String getBrand() {
         return brand;
     }

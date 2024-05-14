@@ -1,4 +1,3 @@
-
 public abstract class Person {
     protected String name, email, address;
     protected Account account = new Account();
