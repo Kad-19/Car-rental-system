@@ -28,6 +28,17 @@ public abstract class ManageCars {
         }
     }
 
+    public static void updateCarStatus(String regno, String status){
+        try{
+            Connection conn = DatabaseManagement.createConnection();
+            Statement statement = conn.createStatement();
+            statement.executeUpdate("Update Cars Set Status = '" + status + "' Where RegNo = '" + regno + "'");
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+
     public static void deleteCar(String regno){
         try{
             Connection conn = DatabaseManagement.createConnection();
