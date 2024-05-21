@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminLoginController">
+   <children>
+      <Label alignment="CENTER" layoutX="212.0" layoutY="61.0" prefHeight="37.0" prefWidth="183.0" text="Login to Admin Site">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <VBox layoutX="166.0" layoutY="138.0" prefHeight="200.0" prefWidth="274.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="45.0" prefWidth="274.0">
+               <children>
+                  <Label text="Username" />
+                  <TextField fx:id="userNameField" promptText="Username" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="274.0">
+               <children>
+                  <Label text="Password" />
+                  <TextField fx:id="passwordField" promptText="Password" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="10.0" layoutY="55.0" prefHeight="45.0" prefWidth="274.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onLoginClick" prefHeight="25.0" prefWidth="197.0" text="Login" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <Button layoutX="65.0" layoutY="67.0" mnemonicParsing="false" onAction="#onGobackClick" text="Go back" />
+   </children>
+</Pane>

@@ -4,7 +4,7 @@ import java.util.Date;
 
 public abstract class Report {
     public static void carReport() throws IOException{
-        String path = "Car-rental-system/CarReport.txt";
+        String path = "CarReport.txt";
         DataOutputStream output = new DataOutputStream(new FileOutputStream(path, true));
         List<Car> cars = ManageCars.getAllCars();
         Date date = new Date();
@@ -16,7 +16,7 @@ public abstract class Report {
     }
 
     public static void customerReport() throws IOException{
-        String path = "Car-rental-system/CustomerReport.txt";
+        String path = "CustomerReport.txt";
         DataOutputStream output = new DataOutputStream(new FileOutputStream(path, true));
         List<Customer> customers = ManageCustomers.getAllCustomer();
         Date date = new Date();
@@ -28,7 +28,7 @@ public abstract class Report {
     }
 
     public static void rentalReport() throws IOException{
-        String path = "Car-rental-system/RentalReport.txt";
+        String path = "RentalReport.txt";
         DataOutputStream output = new DataOutputStream(new FileOutputStream(path, true));
         List<Rental> rentals = ManageRental.getAllRental();
         Date date = new Date();
