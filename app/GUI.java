@@ -81,6 +81,22 @@ public abstract class GUI {
         mainwindow.setScene(new Scene(root, 800, 600));
         mainwindow.show();
     }
+    public static void AddNewCar(Stage mainwindow) throws IOException {
+        FXMLLoader loader = new FXMLLoader(GUI.class.getResource("addNewCarView.fxml"));
+        Parent root = loader.load();
+        AddNewCarController controller = loader.getController();
+        controller.setMainwindow(mainwindow);
+        mainwindow.setScene(new Scene(root, 800, 600));
+        mainwindow.show();
+    }
+    public static void UpdateCar(Stage mainwindow, String regno) throws IOException {
+        FXMLLoader loader = new FXMLLoader(GUI.class.getResource("updateCarView.fxml"));
+        Parent root = loader.load();
+        UpdateCarController controller = loader.getController();
+        controller.setMainwindow(mainwindow, regno);
+        mainwindow.setScene(new Scene(root, 800, 600));
+        mainwindow.show();
+    }
     public static void AvailableCarsList(Stage mainwindow, String username) throws IOException {
         FXMLLoader loader = new FXMLLoader(GUI.class.getResource("availableCarsListView.fxml"));
         Parent root = loader.load();
@@ -95,6 +111,16 @@ public abstract class GUI {
         FXMLLoader loader = new FXMLLoader(GUI.class.getResource("rentedCarsView.fxml"));
         Parent root = loader.load();
         RentedCarsController controller = loader.getController();
+        controller.setMainwindow(mainwindow);
+        controller.setUsername(username);
+        mainwindow.setScene(new Scene(root, 800, 600));
+        mainwindow.show();
+        System.out.println("reached");
+    }
+    public static void ReturnedCarsList(Stage mainwindow, String username) throws IOException {
+        FXMLLoader loader = new FXMLLoader(GUI.class.getResource("returnedCarsView.fxml"));
+        Parent root = loader.load();
+        ReturnedCarsController controller = loader.getController();
         controller.setMainwindow(mainwindow);
         controller.setUsername(username);
         mainwindow.setScene(new Scene(root, 800, 600));

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.AddNewCarController">
+
+   <children>
+      <Button layoutX="65.0" layoutY="67.0" mnemonicParsing="false" onAction="#onGobackClick" style="-fx-background-color: #B36A5E;" text="Go back" textFill="#e8ebe4" />
+      <VBox layoutX="198.0" layoutY="119.0" prefHeight="200.0" prefWidth="204.0" />
+      <VBox layoutX="283.0" layoutY="119.0" prefHeight="200.0" prefWidth="256.0">
+         <children>
+            <TextField fx:id="regnoField" promptText="Reg. no" />
+            <TextField fx:id="brandField" layoutX="10.0" layoutY="10.0" promptText="Brand" />
+<TextField fx:id="modelField" promptText="Model" />
+<TextField fx:id="priceField" promptText="Price" />
+<Button onAction="#handleAddCar" text="Add Car" />
+         </children>
+      </VBox>
+   </children>
+</Pane>

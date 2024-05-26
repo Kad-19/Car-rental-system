@@ -85,12 +85,25 @@ public class CarsListController {
                     {
                         deleteButton.setOnAction((ActionEvent event) -> {
                             Car car = getTableView().getItems().get(getIndex());
-                            deleteCar(car);
+                            boolean confirmed = ConfirmationBox.showConfirmation("Confirm Delete", "Are you sure you want to delete this car?");
+                            if (confirmed) {
+                                // Proceed with the delete operation
+                                deleteCar(car);
+                                System.out.println("Car deleted");
+                            } else {
+                                // Cancel the delete operation
+                                System.out.println("Delete operation canceled");
+                            }
                         });
 
                         updateButton.setOnAction((ActionEvent event) -> {
                             Car car = getTableView().getItems().get(getIndex());
-                            updateCar(car);
+                            try {
+                                updateCar(car);
+                            } catch (IOException e) {
+                             
+                                e.printStackTrace();
+                            }
                         });
                     }
 
@@ -118,16 +131,16 @@ public class CarsListController {
         loadCars(); // Reload the cars to reflect the changes
     }
 
-    private void updateCar(Car car) {
+    private void updateCar(Car car) throws IOException {
         // Implement your update logic here
         // For example, open a new window with car details for editing
+        GUI.UpdateCar(mainwindow, car.getRegno());
     }
 
     @FXML
-    void onAddCarClick(ActionEvent event) {
-        // Implement your logic to open the add car form
-        // After adding, you can refresh the car list
-        loadCars();
+    void onAddCarClick(ActionEvent event) throws IOException {
+        // loadCars();
+        GUI.AddNewCar(mainwindow);
     }
 }
 

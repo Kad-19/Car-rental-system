@@ -13,8 +13,8 @@
             <TableColumn fx:id="priceColumn" text="Price"/>
             <TableColumn fx:id="startDateColumn" text="Start Date"/>
             <TableColumn fx:id="endDateColumn" text="End Date"/>
+             <TableColumn fx:id="actionsColumn" prefWidth="100.0" text="Actions" />
         </columns>
     </TableView>
-    <Button layoutX="65.0" layoutY="67.0" mnemonicParsing="false" onAction="#onLoadClick" text="Load" />
     <Button layoutX="65.0" layoutY="67.0" mnemonicParsing="false" onAction="#onGobackClick" text="Go back" />
 </VBox>

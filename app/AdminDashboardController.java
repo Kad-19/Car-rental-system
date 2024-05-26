@@ -17,6 +17,10 @@ public class AdminDashboardController {
     void onCarsClick(ActionEvent event) throws IOException {
         GUI.CarList(mainwindow);
     }
+    @FXML
+    void onLogout(ActionEvent event) throws IOException {
+        GUI.AdminLogin(mainwindow);
+    }
 
     @FXML
     void onCustomersClick(ActionEvent event) throws IOException {

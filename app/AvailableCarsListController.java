@@ -5,10 +5,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import services.ManageCars;
@@ -16,7 +20,10 @@ import services.ManageCustomers;
 import services.ManageRental;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Date;
+import java.util.Optional;
 
 import beans.Car;
 import beans.Customer;
@@ -96,14 +103,19 @@ public class AvailableCarsListController {
                             
                             Customer customer = ManageCustomers.getCustomer(username); 
                             Date startDate = getStartDate(); 
-                            Date endDate = getEndDate(); 
-                            ManageRental.rent(customer, car, startDate, endDate);
-                            showAlert("Rented", "You have succefuly rented a car");
-                            try {
-                                GUI.CustomerDashboard(mainwindow, username);
-                            } catch (IOException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
+                            Date endDate = showDateInputDialog(mainwindow, "Rent a car", "Select your return date");
+                            if(endDate != null){
+
+                                ManageRental.rent(customer, car, startDate, endDate);
+                                showAlert("Rented", "You have succefuly rented a car");
+                                try {
+                                    GUI.CustomerDashboard(mainwindow, username);
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            else{
+                                showAlert("Warning", "Please select valid date");
                             }
                         });
                     }
@@ -140,5 +152,37 @@ public class AvailableCarsListController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public Date showDateInputDialog(Stage owner, String title, String content) {
+        Dialog<LocalDate> dialog = new Dialog<>();
+        dialog.setTitle(title);
+        dialog.setHeaderText(content);
+
+        // Set the button types
+        ButtonType okButtonType = new ButtonType("OK", ButtonType.OK.getButtonData());
+        ButtonType cancelButtonType = new ButtonType("Cancel", ButtonType.CANCEL.getButtonData());
+        dialog.getDialogPane().getButtonTypes().addAll(okButtonType, cancelButtonType);
+
+        // Create the date picker
+        DatePicker datePicker = new DatePicker();
+        VBox vbox = new VBox();
+        vbox.getChildren().add(datePicker);
+        dialog.getDialogPane().setContent(vbox);
+
+        // Convert the result to a LocalDate when the OK button is clicked
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == okButtonType) {
+                return datePicker.getValue();
+            }
+            return null;
+        });
+
+        Optional<LocalDate> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            LocalDate localDate = result.get();
+            return Date.from(localDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
+        }
+        return null;
     }
 }

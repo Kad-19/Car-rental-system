@@ -11,6 +11,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e8ebe4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.AdminDashboardController">
    <children>
+      <Button layoutX="690.0" layoutY="56.0" mnemonicParsing="false" onAction="#onLogout" style="-fx-background-color: #CC8366;" text="Logout" textFill="#e8ebe4" />
+
       <Label layoutX="59.0" layoutY="64.0" style="-fx-font-weight: bold;" text="Admin Dashboard" textFill="#cc8366">
          <font>
             <Font size="28.0" />

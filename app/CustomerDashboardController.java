@@ -29,8 +29,8 @@ public class CustomerDashboardController {
     }
 
     @FXML
-    void onBookacarClick(ActionEvent event) {
-
+    void onBookacarClick(ActionEvent event) throws IOException {
+        GUI.ReturnedCarsList(mainwindow, userName);
     }
 
     @FXML

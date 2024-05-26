@@ -99,8 +99,12 @@ public class CustomerListController {
 
     private void deleteCustomer(Customer customer) {
         // Implement your delete logic here
-        ManageCustomers.deleteCustomer(customer.getAccount().getUsername());
-        loadCustomers(); // Reload the customers to reflect the changes
+        boolean confirmed = ConfirmationBox.showConfirmation("Confirm Delete", "Are you sure you want to delete this Customer?");
+        if (confirmed) {
+            ManageCustomers.deleteCustomer(customer.getAccount().getUsername());
+            AlertBox.showAlert("Delete", "The Customor was Succesfuly deleted");
+        } 
+        loadCustomers(); 
     }
 
     @FXML
