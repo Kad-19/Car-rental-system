@@ -83,7 +83,6 @@ public abstract class ManageCustomers {
                 customer.setName(result.getString("Name"));
                 customer.setEmail(result.getString("Email"));
                 customer.setAddress(result.getString("Address"));
-                customer.setUsername(result.getString("Username"));
                 customers.add(customer);
             }
         }
