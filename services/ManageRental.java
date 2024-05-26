@@ -43,7 +43,7 @@ public abstract class ManageRental {
         rental.setStatus("Borrowed");
         rental.setStartDate(startDate);
         rental.setEndDate(EndDate);
-        long duration = (EndDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
+        long duration = ((EndDate.getTime() - startDate.getTime()) / (1000 * 60 * 60) + 12) / 24;
         float price = car.getPrice();
         if(duration != 0) price *= duration; 
         rental.setPrice(price);
