@@ -29,6 +29,7 @@ public abstract class ManageRental {
             statement.setDate(5, sDate);
             statement.setDate(6, eDate);
             statement.executeUpdate();
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -42,7 +43,7 @@ public abstract class ManageRental {
         rental.setStatus("Borrowed");
         rental.setStartDate(startDate);
         rental.setEndDate(EndDate);
-        long duration = (EndDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24);
+        long duration = ((EndDate.getTime() - startDate.getTime()) / (1000 * 60 * 60) + 12) / 24;
         float price = car.getPrice();
         if(duration != 0) price *= duration; 
         rental.setPrice(price);
@@ -55,6 +56,7 @@ public abstract class ManageRental {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Update Rentals Set Status = '" + status + "' Where Id = " + id);
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -72,6 +74,7 @@ public abstract class ManageRental {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Delete from Rentals Where Id = " + id);
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -93,6 +96,7 @@ public abstract class ManageRental {
                 rental.setStartDate(result.getDate("Start_Date"));
                 rental.setEndDate(result.getDate("End_Date"));
             }
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -117,6 +121,7 @@ public abstract class ManageRental {
                 rental.setEndDate(result.getDate("End_Date"));
                 rentals.add(rental);
             }
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
