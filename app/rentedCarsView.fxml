@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="app.RentedCarsController">
+    <TableView fx:id="rentalsTableView">
+        <columns>
+            <TableColumn fx:id="regnoColumn" text="Reg No"/>
+            <TableColumn fx:id="priceColumn" text="Price"/>
+            <TableColumn fx:id="startDateColumn" text="Start Date"/>
+            <TableColumn fx:id="endDateColumn" text="End Date"/>
+        </columns>
+    </TableView>
+    <Button layoutX="65.0" layoutY="67.0" mnemonicParsing="false" onAction="#onLoadClick" text="Load" />
+    <Button layoutX="65.0" layoutY="67.0" mnemonicParsing="false" onAction="#onGobackClick" text="Go back" />
+</VBox>

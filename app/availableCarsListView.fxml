@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="app.AvailableCarsListController">
+    <TableView fx:id="carsTableView">
+        <columns>
+            <TableColumn fx:id="regnoColumn" text="Reg No"/>
+            <TableColumn fx:id="brandColumn" text="Brand"/>
+            <TableColumn fx:id="modelColumn" text="Model"/>
+            <TableColumn fx:id="statusColumn" text="Status"/>
+            <TableColumn fx:id="priceColumn" text="Price"/>
+            <TableColumn fx:id="actionColumn" text="Action"/>
+        </columns>
+    </TableView>
+    <HBox spacing="10" alignment="CENTER">
+        
+      <Button layoutX="65.0" layoutY="67.0" mnemonicParsing="false" onAction="#onGobackClick" text="Go back" />
+    </HBox>
+</VBox>
