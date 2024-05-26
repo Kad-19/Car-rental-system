@@ -13,6 +13,7 @@ public abstract class ManageCustomers {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Insert into Customers values ('" + customer.getAccount().getUsername() + "', '" + customer.getAccount().getPassword() + "', '" + customer.getName() + "', '" + customer.getEmail() + "', '" + customer.getAddress() + "')");
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -24,6 +25,7 @@ public abstract class ManageCustomers {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Update Customers Set Name = '" + name + "', Email = '" + email + "', Address = '" + address + "' Where Username = '" + username + "'");
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -35,6 +37,7 @@ public abstract class ManageCustomers {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Update Customers Set Password '" + password + "' Where Username = '" + username + "'");
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -46,6 +49,7 @@ public abstract class ManageCustomers {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Delete from Customers Where Username = '" + username + "'");
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -64,6 +68,7 @@ public abstract class ManageCustomers {
                 customer.setEmail(result.getString("Email"));
                 customer.setAddress(result.getString("Address"));
             }
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -85,6 +90,7 @@ public abstract class ManageCustomers {
                 customer.setAddress(result.getString("Address"));
                 customers.add(customer);
             }
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();

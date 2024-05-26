@@ -25,6 +25,7 @@ public abstract class ManageCars {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Update Cars Set Brand = '" + brand + "', Model = '" + model + "', Status = '" + status + "', Price = " + price + " Where RegNo = '" + regno + "'");
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -36,6 +37,7 @@ public abstract class ManageCars {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Update Cars Set Status = '" + status + "' Where RegNo = '" + regno + "'");
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -47,6 +49,7 @@ public abstract class ManageCars {
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
             statement.executeUpdate("Delete from Cars Where RegNo = '" + regno + "'");
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -66,7 +69,7 @@ public abstract class ManageCars {
                 car.setStatus(result.getString("Status"));
                 car.setPrice((result.getBigDecimal("Price")).floatValue());
             }
-
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -89,7 +92,7 @@ public abstract class ManageCars {
                 car.setPrice((result.getBigDecimal("Price")).floatValue());
                 cars.add(car);
             }
-
+            conn.close();
         }
         catch(Exception e){
             e.printStackTrace();
