@@ -4,21 +4,23 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 
-<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.CustomerListController">
-   <HBox alignment="BOTTOM_LEFT" prefHeight="25.0" prefWidth="402.0">
-      <children>
-            <Button mnemonicParsing="false" onAction="#onGobackClick" text="Go back" />
-      </children>
-   </HBox>
-    <TableView fx:id="customerTableView">
-        <columns>
-            <TableColumn fx:id="usernameColumn" text="Username" />
-            <TableColumn fx:id="nameColumn" text="Name" />
-            <TableColumn fx:id="emailColumn" text="Email" />
-            <TableColumn fx:id="addressColumn" text="Address" />
-            <TableColumn fx:id="actionColumn" text="Actions" />
-        </columns>
-    </TableView>
-</VBox>
+<Pane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e8ebe4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.CustomerListController">
+    <children>
+        <HBox alignment="BOTTOM_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="25.0" prefWidth="402.0">
+            <children>
+                <Button mnemonicParsing="false" onAction="#onGobackClick" style="-fx-background-color: #CC8366;" text="Go back" textFill="#e8ebe4" />
+            </children>
+        </HBox>
+        <TableView fx:id="customerTableView" layoutX="10.0" layoutY="50.0" prefHeight="485.0" prefWidth="780.0">
+            <columns>
+                <TableColumn fx:id="usernameColumn" prefWidth="156.0" text="Username" />
+                <TableColumn fx:id="nameColumn" prefWidth="156.0" text="Name" />
+                <TableColumn fx:id="emailColumn" prefWidth="156.0" text="Email" />
+                <TableColumn fx:id="addressColumn" prefWidth="156.0" text="Address" />
+                <TableColumn fx:id="actionColumn" prefWidth="156.0" text="Actions" />
+            </columns>
+        </TableView>
+    </children>
+</Pane>

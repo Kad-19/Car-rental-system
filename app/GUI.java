@@ -41,6 +41,15 @@ public abstract class GUI {
         mainwindow.setScene(new Scene(root, 800, 600));
         mainwindow.show();
     }
+    public static void ChangePassword(Stage mainwindow, String username) throws IOException {
+        FXMLLoader loader = new FXMLLoader(GUI.class.getResource("changePassword.fxml"));
+        Parent root = loader.load();
+        ChangePasswordController controller = loader.getController();
+        controller.setMainwindow(mainwindow);
+        controller.setUserName(username);
+        mainwindow.setScene(new Scene(root, 800, 600));
+        mainwindow.show();
+    }
     public static void AdminDashboard(Stage mainwindow) throws IOException {
         FXMLLoader loader = new FXMLLoader(GUI.class.getResource("adminDashboardView.fxml"));
         Parent root = loader.load();

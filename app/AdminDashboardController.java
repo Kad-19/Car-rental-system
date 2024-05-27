@@ -1,9 +1,12 @@
 package app;
+import java.io.File;
 import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
+import services.Report;
 
 public class AdminDashboardController {
     private Stage mainwindow;
@@ -29,12 +32,29 @@ public class AdminDashboardController {
 
     @FXML
     void onGeneratereportClick(ActionEvent event) {
-
+        saveToDirectory(mainwindow);
     }
 
     @FXML
     void onRentsClick(ActionEvent event) throws IOException {
         GUI.RentalList(mainwindow);
+    }
+
+    public void saveToDirectory(Stage stage) {
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+
+        File directory = directoryChooser.showDialog(stage);
+
+        if (directory != null) {
+            try {
+                Report.carReport(directory.getAbsolutePath() + "/CarReport.txt");
+                Report.customerReport(directory.getAbsolutePath() + "/CustomerReport.txt");
+                Report.rentalReport(directory.getAbsolutePath() + "/RentalReport.txt");
+                AlertBox.showAlert("Confirmation", "Your report is saved at " + directory.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

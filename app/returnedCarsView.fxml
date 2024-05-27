@@ -5,17 +5,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ReturnedCarsController">
-    <Button layoutX="65.0" layoutY="67.0" mnemonicParsing="false" onAction="#onGobackClick" text="Go back" />
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #e8ebe4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.ReturnedCarsController">
+    <Button layoutX="54.0" layoutY="66.0" mnemonicParsing="false" onAction="#onGobackClick" style="-fx-background-color: #CC8366;" text="Go back" textFill="#e8ebe4" />
 
-    <TableView fx:id="rentalsTableView" layoutX="-1.0" layoutY="143.0" prefHeight="200.0" prefWidth="800.0">
+    <TableView fx:id="rentalsTableView" layoutX="54.0" layoutY="147.0" prefHeight="365.0" prefWidth="693.0">
         <columns>
             
-            <TableColumn fx:id="regnoColumn" prefWidth="100.0" text="Reg No" />
-            <TableColumn fx:id="statusColumn" prefWidth="100.0" text="Status" />
-            <TableColumn fx:id="priceColumn" prefWidth="100.0" text="Price" />
-            <TableColumn fx:id="startDateColumn" prefWidth="150.0" text="Start Date" />
-            <TableColumn fx:id="endDateColumn" prefWidth="150.0" text="End Date" />
+            <TableColumn fx:id="regnoColumn" prefWidth="140.0" text="Reg No" />
+            <TableColumn fx:id="statusColumn" prefWidth="119.0" text="Status" />
+            <TableColumn fx:id="priceColumn" prefWidth="108.0" text="Price" />
+            <TableColumn fx:id="startDateColumn" prefWidth="171.0" text="Start Date" />
+            <TableColumn fx:id="endDateColumn" prefWidth="154.0" text="End Date" />
         </columns>
     </TableView>
 </AnchorPane>

@@ -46,4 +46,8 @@ public class CustomerDashboardController {
     void onLogout(ActionEvent event) throws IOException {
         GUI.loginPage(mainwindow);
     }
+    @FXML
+    void onChangePassword(ActionEvent event) throws IOException{
+        GUI.ChangePassword(mainwindow, userName);
+    }
 }

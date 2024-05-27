@@ -3,19 +3,21 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Pane?>
 
-<VBox prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.CarsListController">
-    <Button mnemonicParsing="false" onAction="#onGobackClick" text="Go back" />
-    <Button onAction="#onAddCarClick" text="Add New Car" />
-    <TableView fx:id="carTableView" prefHeight="375.0" prefWidth="800.0">
-        <columns>
-            <TableColumn fx:id="regnoColumn" prefWidth="104.0" text="Reg No" />
-            <TableColumn fx:id="brandColumn" prefWidth="93.0" text="Brand" />
-            <TableColumn fx:id="modelColumn" prefWidth="100.0" text="Model" />
-            <TableColumn fx:id="statusColumn" prefWidth="101.0" text="Status" />
-            <TableColumn fx:id="priceColumn" prefWidth="129.0" text="Price" />
-            <TableColumn fx:id="actionColumn" prefWidth="272.0" text="Actions" />
-        </columns>
-    </TableView>
-</VBox>
+<Pane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.CarsListController">
+    <children>
+        <Button layoutX="37.0" layoutY="23.0" mnemonicParsing="false" onAction="#onGobackClick" style="-fx-background-color: #CC8366;" text="Go back" textFill="#e8ebe4" />
+        <Button layoutX="676.0" layoutY="57.0" onAction="#onAddCarClick" style="-fx-background-color: #CC8366;" text="Add New Car" textFill="#e8ebe4" />
+        <TableView fx:id="carTableView" layoutX="37.0" layoutY="97.0" prefHeight="449.0" prefWidth="726.0">
+            <columns>
+                <TableColumn fx:id="regnoColumn" prefWidth="104.0" text="Reg No" />
+                <TableColumn fx:id="brandColumn" prefWidth="93.0" text="Brand" />
+                <TableColumn fx:id="modelColumn" prefWidth="100.0" text="Model" />
+                <TableColumn fx:id="statusColumn" text="Status" />
+                <TableColumn fx:id="priceColumn" prefWidth="88.0" text="Price" />
+                <TableColumn fx:id="actionColumn" prefWidth="259.0" text="Actions" />
+            </columns>
+        </TableView>
+    </children>
+</Pane>

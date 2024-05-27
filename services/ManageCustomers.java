@@ -36,7 +36,7 @@ public abstract class ManageCustomers {
         try{
             Connection conn = DatabaseManagement.createConnection();
             Statement statement = conn.createStatement();
-            statement.executeUpdate("Update Customers Set Password '" + password + "' Where Username = '" + username + "'");
+            statement.executeUpdate("Update Customers Set Password = '" + password + "' Where Username = '" + username + "'");
             conn.close();
         }
         catch(Exception e){

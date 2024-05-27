@@ -3,6 +3,7 @@ package app;
 import java.io.IOException;
 
 import beans.Car;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -56,8 +57,19 @@ public class AddNewCarController {
         }
 
         Car newCar = new Car(regno, brand, model, "Free", price);
-        ManageCars.insertCar(newCar);
-        showAlert("Success", "Car added successfully!");
+        new Thread(() -> {
+            try {
+                ManageCars.insertCar(newCar); 
+                Platform.runLater(() -> {
+                    showAlert("Success", "Car added successfully.");
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+                Platform.runLater(() -> {
+                    showAlert("Error", "Failed to add car.");
+                });
+            }
+        }).start();
         clearFields();
     }
 
