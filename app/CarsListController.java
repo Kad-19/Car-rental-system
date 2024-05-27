@@ -87,11 +87,9 @@ public class CarsListController {
                             Car car = getTableView().getItems().get(getIndex());
                             boolean confirmed = ConfirmationBox.showConfirmation("Confirm Delete", "Are you sure you want to delete this car?");
                             if (confirmed) {
-                                // Proceed with the delete operation
                                 deleteCar(car);
                                 System.out.println("Car deleted");
                             } else {
-                                // Cancel the delete operation
                                 System.out.println("Delete operation canceled");
                             }
                         });
@@ -126,14 +124,13 @@ public class CarsListController {
     }
 
     private void deleteCar(Car car) {
-        // Implement your delete logic here
+        
         ManageCars.deleteCar(car.getRegno());
-        loadCars(); // Reload the cars to reflect the changes
+        loadCars(); 
     }
 
     private void updateCar(Car car) throws IOException {
-        // Implement your update logic here
-        // For example, open a new window with car details for editing
+       
         GUI.UpdateCar(mainwindow, car.getRegno());
     }
 

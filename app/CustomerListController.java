@@ -98,7 +98,6 @@ public class CustomerListController {
     }
 
     private void deleteCustomer(Customer customer) {
-        // Implement your delete logic here
         boolean confirmed = ConfirmationBox.showConfirmation("Confirm Delete", "Are you sure you want to delete this Customer?");
         if (confirmed) {
             ManageCustomers.deleteCustomer(customer.getAccount().getUsername());
@@ -109,8 +108,7 @@ public class CustomerListController {
 
     @FXML
     void onAddCustomerClick(ActionEvent event) {
-        // Implement your logic to open the add customer form
-        // After adding, you can refresh the customer list
+      
         loadCustomers();
     }
     @FXML
